@@ -14,7 +14,7 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
         
-        # reverse the sencond haft
+        # reverse the sencond haft so we loop starting from the last node of it
         second = slow.next
         prev = None
         # do this split in 2 parts
@@ -22,6 +22,7 @@ class Solution:
         while second:
             temp = second.next
             second.next = prev
+            # move pointers forwards
             prev = second
             second = temp
             
@@ -32,6 +33,6 @@ class Solution:
             # insert second in the middle of first and first.next
             first.next = second
             second.next = temp1 
-            # move pointers
+            # move pointers forwards
             first = temp1
             second = temp2
