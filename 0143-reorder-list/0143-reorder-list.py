@@ -9,7 +9,7 @@ class Solution:
         Do not return anything, modify head in-place instead.
         """
         # find the middle
-        fast, slow = head.next, head
+        fast, slow = head, head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
