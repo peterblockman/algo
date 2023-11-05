@@ -7,7 +7,8 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         fast, slow = head, head
-
+        
+        # if there is a cycle in it the fast and slow will meet eventually
         while fast and fast.next:
             fast = fast.next.next
             slow = slow.next
