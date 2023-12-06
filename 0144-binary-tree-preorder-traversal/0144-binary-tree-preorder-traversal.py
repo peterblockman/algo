@@ -14,5 +14,6 @@ class Solution:
             dfs(root.left)
             dfs(root.right)
             return root
+        
         dfs(root)   
         return res
