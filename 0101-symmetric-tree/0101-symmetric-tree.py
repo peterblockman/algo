@@ -6,24 +6,22 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        def isMirror(left: TreeNode, right: TreeNode) -> bool:
-            # Base case 1: If both nodes are Empty, they are mirror
-            if not left and not right:
+        def isMirror(node1, node2):
+            # we reach the end, they should be symmetric
+            if not node1 and not node2:
                 return True
-            # Base case 2: If only one node is Empty or values are different, they are not mirror
-            if not left or not right:
+            
+            # either of them is empty means they are not valid
+            if not node1 or not node2:
                 return False
-            # Base case 3: if values of the nodes mismatch, they are not mirror
-            # if left.val != right.val:
-            #     return False
 
-            # Because it is a mirror of itself:
-            # the left child node of a left node and the right child node of a right node must be the same
-            # the same for right/left
-            # if we use base case 3 above then we don't need to include left.val == right.val in the return statement
-            return left.val == right.val and isMirror(left.left, right.right) and isMirror(left.right, right.left)
+            # diffrent values: not symmetric
+            if node1.val != node2.val:
+                return False
+            
+            # check left child of node1 and right child of node2 and vice versa
+            return isMirror(node1.left, node2.right) and isMirror(node1.right, node2.left)
         
-        # Check if the tree is symmetric starting from the root
-        if not root:
-            return True
-        return isMirror(root.left, root.right)
+        # passing root as both parameters
+        return isMirror(root, root)
+            
